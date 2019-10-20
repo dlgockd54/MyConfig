@@ -8,6 +8,8 @@ while [ 1 ]
 
         if [ "$password" == "$samplePassword" ]; then
             exit 0
+        else
+            echo "잘못된 비밀번호"
         fi
 done
 
