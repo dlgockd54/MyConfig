@@ -1,0 +1,14 @@
+#!/bin/bash
+
+samplePassword=501103
+
+while [ 1 ]
+    do
+        read -p "비밀번호 입력: " password < /dev/tty
+
+        if [ "$password" == "$samplePassword" ]; then
+            exit 0
+        fi
+done
+
+exit 1 # exit 값이 0이 아니면 커밋을 취소한다.
