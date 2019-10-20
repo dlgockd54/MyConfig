@@ -1,0 +1,33 @@
+#!/bin/bash
+
+samplePassword=501103
+
+parse_git_branch() {
+    if git rev-parse --git-dir > /dev/null 2>&1
+    then
+        gitver=$(git branch 2>/dev/null | sed -n '/^\*/s/^\* //p')
+    else
+        return 0
+    fi
+
+    echo -e "$gitver"
+}
+
+echo ""
+echo ""
+echo "Release 상태, $(parse_git_branch)에 푸시하는게 맞는지 확인 필요!"
+echo ""
+echo ""
+
+while [ 1 ]
+    do
+        read -p "비밀번호 입력: " password < /dev/tty
+
+        if [ "$password" == "$samplePassword" ]; then
+            exit 0
+        else
+            echo "잘못된 비밀번호"
+        fi
+done
+
+exit 1 # exit 값이 0이 아니면 커밋을 취소한다.
