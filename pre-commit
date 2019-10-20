@@ -1,6 +1,8 @@
 #!/bin/bash
 
 samplePassword=501103
+GREEN='\033[0;32m'
+RESET='\033[0m'
 
 parse_git_branch() {
     if git rev-parse --git-dir > /dev/null 2>&1
@@ -15,7 +17,7 @@ parse_git_branch() {
 
 echo ""
 echo ""
-echo "Release 상태, $(parse_git_branch)에 커밋하는게 맞는지 확인 필요!"
+echo -e "Release 상태, ${GREEN}$(parse_git_branch)${RESET}에 커밋하는게 맞는지 확인 필요!"
 echo ""
 echo ""
 
