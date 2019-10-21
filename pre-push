@@ -32,4 +32,4 @@ while [ 1 ]
         fi
 done
 
-exit 1 # exit 값이 0이 아니면 커밋을 취소한다.
+exit 1 # exit 값이 0이 아니면 푸시를 취소한다.
