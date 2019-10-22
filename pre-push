@@ -5,7 +5,7 @@ GREEN='\033[0;32m'
 RESET='\033[0m'
 
 parse_push_target_branch() {
-    push_cmd=$(tail -1 $HOME/.zsh_history)
+    push_cmd=$(tail -1 $HOME/.zsh_history) # 기본 쉘로 zsh을 사용하는 경우에만 동작함. bash인 경우 .bash_history로 변경해야함.
     target_branch=$(echo $push_cmd | awk -F' ' '{print $5}')
 
     echo "$target_branch"
