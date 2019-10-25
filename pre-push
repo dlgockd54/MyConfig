@@ -2,6 +2,7 @@
 
 samplePassword=501103
 GREEN='\033[0;32m'
+RED='\033[0;31m'
 RESET='\033[0m'
 
 parse_push_target_branch() {
@@ -13,6 +14,21 @@ parse_push_target_branch() {
 
 echo ""
 echo ""
+
+if [ $(parse_push_target_branch) == "master" ]
+then
+    echo -e "${RED}정말 master 브랜치에 푸시하려는게 맞나요?${RESET}"
+    read -p "(Y / N): " input < /dev/tty
+
+    if [ $input != "Y" -a $input != "y" ]
+    then
+        echo "푸시 종료"
+        exit 1
+    fi
+
+    echo ""
+fi
+
 echo -e "Release 상태, ${GREEN}$(parse_push_target_branch)${RESET}에 푸시하는게 맞는지 확인 필요!"
 echo ""
 echo ""
